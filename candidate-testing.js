@@ -4,6 +4,7 @@ const input = require('readline-sync');
 
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
+
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
@@ -30,7 +31,7 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-let candidateName = input.question("What is your name?");
+  candidateName = input.question("What is your name?");
 
 }
 
@@ -71,19 +72,34 @@ function gradeQuiz(candidateAnswers) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
       correctAnswerCounter+=1;
     }
+    
   }
 
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
 
   grade = (correctAnswerCounter / questions.length)*100 
 
+  for (let i = 0; i < questions.length; i++){
+    console.log(`${i+1}) ${questions[i]}`);
+    console.log(`Your Answer: ${candidateAnswers[i]}`);
+    console.log(`Correct Answer ${correctAnswers[i]}`);
+    console.log("\n");
+  }
+
+  console.log(`>>> Overall Grade: ${grade}% (${correctAnswerCounter} of ${questions.length} responses correct) <<<`);
+  if (grade >= 80){
+    console.log('>>> Status: PASSED <<<');
+  }else{
+    console.log('>>> Status: FAILED <<<');
+  }
+
   return grade;
-}
+} 
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log(`Hello ${candidateName}`);
+  console.log(`Candidate Name: ${candidateName}`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
