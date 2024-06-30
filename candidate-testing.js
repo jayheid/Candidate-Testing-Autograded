@@ -79,11 +79,12 @@ function gradeQuiz(candidateAnswers) {
 
   grade = (correctAnswerCounter / questions.length)*100 
 
+  console.log(`Candidate Name: ${candidateName}`)
+
   for (let i = 0; i < questions.length; i++){
     console.log(`${i+1}) ${questions[i]}`);
     console.log(`Your Answer: ${candidateAnswers[i]}`);
-    console.log(`Correct Answer ${correctAnswers[i]}`);
-    console.log("\n");
+    console.log(`Correct Answer ${correctAnswers[i]} \n`);
   }
 
   console.log(`>>> Overall Grade: ${grade}% (${correctAnswerCounter} of ${questions.length} responses correct) <<<`);
